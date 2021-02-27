@@ -1,203 +1,61 @@
 ---
 id: doc1
-title: Style Guide
-sidebar_label: Style Guide
+title: Docusaurus初步上手
+sidebar_label: Docusaurus初步上手
 slug: /
 ---
 
-You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
+## Docusaurus创建
 
-## Markdown Syntax
+[Docusaurus 中文网](https://www.docusaurus.cn/docs/installation)
 
-To serve as an example page when styling markdown based Docusaurus sites.
-
-## Headers
-
-# H1 - Create the best documentation
-
-## H2 - Create the best documentation
-
-### H3 - Create the best documentation
-
-#### H4 - Create the best documentation
-
-##### H5 - Create the best documentation
-
-###### H6 - Create the best documentation
+### 安装方式
 
 ---
 
-## Emphasis
+1.直接通过@docusaurus/init安装
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+ `npx @docusaurus/init@latest init [name] [template]`
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+2.使用yarn全局安装@docusaurus/init再运行该脚手架
 
-Combined emphasis with **asterisks and _underscores_**.
+`yarn global add @docusaurus/init`
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+`docusaurus-init init`
 
----
+![1-1](../static/img/2021-02-27-27.png)
 
-## Lists
-
-1. First ordered list item
-1. Another item
-   - Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-   1. Ordered sub-list
-1. And another item.
-
-* Unordered list can use asterisks
-
-- Or minuses
-
-+ Or pluses
+### 项目结构
 
 ---
 
-## Links
+* /blog/ - 包含博客的 Markdown 文件。
+* /docs/ - 包含文档的 Markdown 文件。可在 sidebars.js 中自定义文档侧边栏的顺序。
+* /src/ - 非文档文件，例如页面或自定义的 React 组件。
+* /src/pages - 此目录中的所有文件都将转换为网站页面(page)。
+* /static/ - 静态文件目录。此处的所有内容都将复制到最终的 build 目录下。
+* /docusaurus.config.js - 包含站点配置的配置文件。
+* /package.json - Docusaurus 网站也是一个 React 应用程序。你可以在其中安装和使用所需的任何 npm 软件包。
+* /sidebar.js - 生成文档时使用此文件来指定侧边栏中的文档顺序。
 
-[I'm an inline-style link](https://www.google.com/)
+## 部署到github
 
-[I'm an inline-style link with title](https://www.google.com/ "Google's Homepage")
+1. gh创建仓库
 
-[I'm a reference-style link][arbitrary case-insensitive reference text]
+[GitHub CLI官网](https://cli.github.com/manual/)
 
-[You can use numbers for reference-style link definitions][1]
+* 初次使用gh的时候需要登录github
 
-Or leave it empty and use the [link text itself].
+通过`gh auth login`命令，后续会依次提示操作。
 
-URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com/ or <http://www.example.com/> and sometimes example.com (but not on GitHub, for example).
+![2-1](../static/img/2021-02-27-24.png)
 
-Some text to show that the reference links can follow later.
+* 其次使用`git init`初始化
+* 最后使用`gh repo create`创建仓库
 
-[arbitrary case-insensitive reference text]: https://www.mozilla.org/
-[1]: http://slashdot.org/
-[link text itself]: http://www.reddit.com/
+![2-2](../static/img/2021-02-27-25.png)
 
----
-
-## Images
-
-Here's our logo (hover to see the title text):
-
-Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 1')
-
-Reference-style: ![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2'
-
-Images from any folder can be used by providing path to file. Path should be relative to markdown file.
-
-![img](../static/img/logo.svg)
-
----
-
-## Code
-
-```javascript
-var s = 'JavaScript syntax highlighting';
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print(s)
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in a <b>tag</b>.
-```
-
-```js {2}
-function highlightMe() {
-  console.log('This line can be highlighted!');
-}
-```
-
----
-
-## Tables
-
-Colons can be used to align columns.
-
-| Tables        |      Are      |   Cool |
-| ------------- | :-----------: | -----: |
-| col 3 is      | right-aligned | \$1600 |
-| col 2 is      |   centered    |   \$12 |
-| zebra stripes |   are neat    |    \$1 |
-
-There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
-
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
-
----
-
-## Blockquotes
-
-> Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
----
-
-## Inline HTML
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
----
-
-## Line Breaks
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a _separate paragraph_.
-
-This line is also a separate paragraph, but... This line is only separated by a single newline, so it's a separate line in the _same paragraph_.
-
----
-
-## Admonitions
-
-:::note
-
-This is a note
-
-:::
-
-:::tip
-
-This is a tip
-
-:::
-
-:::important
-
-This is important
-
-:::
-
-:::caution
-
-This is a caution
-
-:::
-
-:::warning
-
-This is a warning
-
-:::
+3. git上传项目
+	1. git add . (添加当前项目文件)
+	2. git commit -m "描述"  (添加修改文件的描述)
+	3. git push 上传文件
