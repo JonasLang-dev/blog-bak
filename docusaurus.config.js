@@ -76,4 +76,59 @@ module.exports = {
       },
     ],
   ],
+    plugins: [
+      [
+        '@docusaurus/plugin-pwa',
+        {
+          pwaHead: [
+            {
+              tagName: 'link',
+              rel: 'icon',
+              href: '/static/img/logo.svg',
+            },
+            {
+              tagName: 'link',
+              rel: 'manifest',
+              href: '/static/manifest.json',
+            },
+            {
+              tagName: 'meta',
+              name: 'theme-color',
+              content: 'rgb(37, 194, 160)',
+            },
+            {
+              tagName: 'meta',
+              name: 'apple-mobile-web-app-capable',
+              content: 'yes',
+            },
+            {
+              tagName: 'meta',
+              name: 'apple-mobile-web-app-status-bar-style',
+              content: '#000',
+            },
+            {
+              tagName: 'link',
+              rel: 'apple-touch-icon',
+              href: '/static/img/logo.svg',
+            },
+            {
+              tagName: 'link',
+              rel: 'mask-icon',
+              href: 'static/img/logo.svg',
+              color: 'rgb(37, 194, 160)',
+            },
+            {
+              tagName: 'meta',
+              name: 'msapplication-TileImage',
+              content: '/static/img/logo.svg',
+            },
+            {
+              tagName: 'meta',
+              name: 'msapplication-TileColor',
+              content: '#000',
+            },
+          ],
+        },
+      ],
+    ],
 };

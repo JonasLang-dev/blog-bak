@@ -1,0 +1,21 @@
+{
+    "name": "HackerWeb",
+    "short_name": "HackerWeb",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "A readable Hacker News app.",
+    "icons": [
+        {
+            "src": "./img/logo.svg",
+            "sizes": "48x48",
+            "type": "image/svg"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
+        }
+    ]
+}
