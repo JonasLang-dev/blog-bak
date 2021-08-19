@@ -2,7 +2,7 @@
 id: doc1
 title: Docusaurus初步上手
 sidebar_label: Docusaurus初步上手
-slug: /
+slug: /doc1
 ---
 
 ## Docusaurus创建

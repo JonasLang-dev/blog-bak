@@ -18,8 +18,8 @@ module.exports = {
       items: [
         {
           to: "docs/",
-          activeBasePath: "docs",
-          label: "Docs",
+          activeBasePath: "doc",
+          label: "学习小笔记",
           position: "left",
         },
         { to: "blog", label: "Blog", position: "left" },
@@ -39,6 +39,15 @@ module.exports = {
           items: [
             {
               label: "Docusaurus初步上手",
+              to: "docs/doc1",
+            },
+          ],
+        },
+        {
+          title: "学习小笔记",
+          items: [
+            {
+              label: "数据结构和算法",
               to: "docs/",
             },
           ],
@@ -76,59 +85,77 @@ module.exports = {
       },
     ],
   ],
-    plugins: [
-      [
-        '@docusaurus/plugin-pwa',
-        {
-          pwaHead: [
-            {
-              tagName: 'link',
-              rel: 'icon',
-              href: '/static/img/logo.svg',
-            },
-            {
-              tagName: 'link',
-              rel: 'manifest',
-              href: '/static/manifest.json',
-            },
-            {
-              tagName: 'meta',
-              name: 'theme-color',
-              content: 'rgb(37, 194, 160)',
-            },
-            {
-              tagName: 'meta',
-              name: 'apple-mobile-web-app-capable',
-              content: 'yes',
-            },
-            {
-              tagName: 'meta',
-              name: 'apple-mobile-web-app-status-bar-style',
-              content: '#000',
-            },
-            {
-              tagName: 'link',
-              rel: 'apple-touch-icon',
-              href: '/static/img/logo.svg',
-            },
-            {
-              tagName: 'link',
-              rel: 'mask-icon',
-              href: 'static/img/logo.svg',
-              color: 'rgb(37, 194, 160)',
-            },
-            {
-              tagName: 'meta',
-              name: 'msapplication-TileImage',
-              content: '/static/img/logo.svg',
-            },
-            {
-              tagName: 'meta',
-              name: 'msapplication-TileColor',
-              content: '#000',
-            },
+  plugins: [
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        injectManifestConfig: {
+          manifestTransforms: [
+            //...
           ],
+          modifyURLPrefix: {
+            //...
+          },
+          // We already add regular static assets (html, images...) to be available offline
+          // You can add more files according to your needs
+          globPatterns: ["**/*.{pdf,docx,xlsx}"],
+          // ...
         },
-      ],
+        debug: true,
+        offlineModeActivationStrategies: [
+          "appInstalled",
+          "standalone",
+          "queryString",
+        ],
+        pwaHead: [
+          {
+            tagName: "link",
+            rel: "icon",
+            href: "/img/docusaurus.png",
+          },
+          {
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+          {
+            tagName: "meta",
+            name: "theme-color",
+            content: "rgb(37, 194, 160)",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-capable",
+            content: "yes",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-status-bar-style",
+            content: "#000",
+          },
+          {
+            tagName: "link",
+            rel: "apple-touch-icon",
+            href: "/img/docusaurus.png",
+          },
+          {
+            tagName: "link",
+            rel: "mask-icon",
+            href: "/img/docusaurus.svg",
+            color: "rgb(37, 194, 160)",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileImage",
+            content: "/img/docusaurus.png",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileColor",
+            content: "#000",
+          },
+        ],
+      },
     ],
+  ],
 };
