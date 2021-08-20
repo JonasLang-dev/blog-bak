@@ -22,8 +22,8 @@ slug: /doc1
 `yarn global add @docusaurus/init`
 
 `docusaurus-init init`
-
-![1-1](../static/img/2021-02-27-27.png)
+<!-- 
+![1-1](../static/img/2021-02-27-27.png) -->
 
 ### 项目结构
 
@@ -48,12 +48,12 @@ slug: /doc1
 
 通过`gh auth login`命令，后续会依次提示操作。
 
-![2-1](../static/img/2021-02-27-24.png)
+<!-- ![2-1](../static/img/2021-02-27-24.png) -->
 
 * 其次使用`git init`初始化
 * 最后使用`gh repo create`创建仓库
-
-![2-2](../static/img/2021-02-27-25.png)
+<!-- 
+![2-2](../static/img/2021-02-27-25.png) -->
 
 3. git上传项目
 	1. git add . (添加当前项目文件)

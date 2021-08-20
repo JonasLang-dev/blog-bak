@@ -1,33 +1,36 @@
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "加菲的网站",
-  tagline: "小学生写的日记",
-  url: "https://cat-blog.vercel.app/",
+  title: "My Site",
+  tagline: "Dinosaurs are cool",
+  url: "https://your-docusaurus-test-site.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "supercutcat", // Usually your GitHub org/user name.
-  projectName: "cat-blog", // Usually your repo name.
+  organizationName: "facebook", // Usually your GitHub org/user name.
+  projectName: "docusaurus", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "Cat Site",
+      title: "My Site",
       logo: {
-        alt: "My Site sLogo",
+        alt: "My Site Logo",
         src: "img/logo.svg",
       },
       items: [
         {
-          to: "docs/",
-          activeBasePath: "doc",
-          label: "学习小笔记",
+          type: "doc",
+          docId: "intro",
           position: "left",
+          label: "Tutorial",
         },
-        { to: "blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/supercutcat/cat-blog",
+          href: "https://github.com/facebook/docusaurus",
           label: "GitHub",
           position: "right",
-          label: "加菲的Github",
         },
       ],
     },
@@ -35,34 +38,50 @@ module.exports = {
       style: "dark",
       links: [
         {
-          title: "文档",
+          title: "学习文档",
           items: [
             {
-              label: "Docusaurus初步上手",
-              to: "docs/doc1",
+              label: "Tutorial",
+              to: "/docs/intro",
             },
           ],
         },
         {
-          title: "学习小笔记",
+          title: "Community",
           items: [
             {
-              label: "数据结构和算法",
-              to: "docs/",
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+            },
+            {
+              label: "Discord",
+              href: "https://discordapp.com/invite/docusaurus",
+            },
+            {
+              label: "Twitter",
+              href: "https://twitter.com/docusaurus",
             },
           ],
         },
         {
-          title: "博客",
+          title: "More",
           items: [
             {
-              label: "Docusaurus总结",
-              to: "blog/",
+              label: "Blog",
+              to: "/blog",
+            },
+            {
+              label: "GitHub",
+              href: "https://github.com/facebook/docusaurus",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} cat-blog Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
     },
   },
   presets: [
@@ -72,35 +91,23 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/supercutcat/cat-blog/edit/master/",
+          editUrl:
+            "https://github.com/facebook/docusaurus/edit/master/website/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/supercutcat/cat-blog/edit/master",
+          editUrl:
+            "https://github.com/facebook/docusaurus/edit/master/website/blog/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
-  ],
-  plugins: [
     [
       "@docusaurus/plugin-pwa",
       {
-        injectManifestConfig: {
-          manifestTransforms: [
-            //...
-          ],
-          modifyURLPrefix: {
-            //...
-          },
-          // We already add regular static assets (html, images...) to be available offline
-          // You can add more files according to your needs
-          globPatterns: ["**/*.{pdf,docx,xlsx}"],
-          // ...
-        },
         debug: true,
         offlineModeActivationStrategies: [
           "appInstalled",
@@ -155,6 +162,18 @@ module.exports = {
             content: "#000",
           },
         ],
+        injectManifestConfig: {
+          manifestTransforms: [
+            //...
+          ],
+          modifyURLPrefix: {
+            //...
+          },
+          // We already add regular static assets (html, images...) to be available offline
+          // You can add more files according to your needs
+          globPatterns: ["**/*.{pdf,docx,xlsx}"],
+          // ...
+        },
       },
     ],
   ],
