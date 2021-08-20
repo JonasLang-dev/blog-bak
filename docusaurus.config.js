@@ -3,32 +3,32 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
+  title: "加菲的网站",
+  tagline: "小学生的日记",
+  url: "https://cat.supercatcut.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  favicon: "img/OIP-C.jpg",
+  organizationName: "Personal", // Usually your GitHub org/user name.
+  projectName: "cat blog", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "My Site",
+      title: "Cat Site",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
+        alt: "Cat Logo",
+        src: "img/R-C.jfif",
       },
       items: [
         {
           type: "doc",
           docId: "intro",
           position: "left",
-          label: "Tutorial",
+          label: "文档",
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/supercutcat/cat-blog",
           label: "GitHub",
           position: "right",
         },
@@ -47,24 +47,16 @@ module.exports = {
           ],
         },
         {
-          title: "Community",
+          title: "社交",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
               label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              href: "https://twitter.com/supercutcat",
             },
           ],
         },
         {
-          title: "More",
+          title: "更多",
           items: [
             {
               label: "Blog",
@@ -72,12 +64,12 @@ module.exports = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/supercutcat/cat-blog",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 超级可爱加菲 Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -118,7 +110,7 @@ module.exports = {
           {
             tagName: "link",
             rel: "icon",
-            href: "/img/docusaurus.png",
+            href: "/img/OIP-C.jpg",
           },
           {
             tagName: "link",
@@ -143,18 +135,18 @@ module.exports = {
           {
             tagName: "link",
             rel: "apple-touch-icon",
-            href: "/img/docusaurus.png",
+            href: "/img/OIP-C.jpg",
           },
           {
             tagName: "link",
             rel: "mask-icon",
-            href: "/img/docusaurus.svg",
+            href: "/img/OIP-C.jpg",
             color: "rgb(37, 194, 160)",
           },
           {
             tagName: "meta",
             name: "msapplication-TileImage",
-            content: "/img/docusaurus.png",
+            content: "/img/OIP-C.jpg",
           },
           {
             tagName: "meta",
