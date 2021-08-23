@@ -233,7 +233,7 @@ printMatrix(arr);
 console.table(arr)	// 可以在控制台打印二维数组
 ```
 
-![consoletable](../static/img/consoletable.png)
+![consoletable](../../static/img/consoletable.png)
 
 ### 多维数组
 
