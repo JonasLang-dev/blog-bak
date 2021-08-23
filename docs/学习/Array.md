@@ -233,7 +233,7 @@ printMatrix(arr);
 console.table(arr)	// 可以在控制台打印二维数组
 ```
 
-<!-- ![consoletable](../static/img/consoletable.png) -->
+![consoletable](../static/img/consoletable.png)
 
 ### 多维数组
 
@@ -299,6 +299,25 @@ for (let i = 0; i < matrix3x3x3.length; i++) {
 
 ## JS数组方法
 
+| function | description                                     |
+| -------- | ----------------------------------------------- |
+| concat   | Connect multiple arrays.                         |
+| every    |	Run a given function on each element in the array, each element returns true, and true is returned. |
+| filter   |	Run a given function on each element in the array, returns an array of elements of true.            |
+| forEach | Run a given function on each element in the array,  this method doesn't return a value. |
+| 	join	|	Connect all the array elements into a single string.	|
+| 	indexOf	|	Returns the index of the first array element equal to a given parameter. |
+| lastIndexOf |	Returns the maximum value in the index of the first array element equal to a given parameter. |
+|	map |	Run a given function on each element in the array, returns an array of results from each function call. |
+| reverse | The order in which the group elements are reversed. |
+|	slice | 	Incoming index values, returning elements within the corresponding index range in the array as new arrays. |
+| some | Run a given function on each element in the array,  any element returns true, and true is returned. |
+| sort | Sort arrays alphabetically, supporting incoming functions that specify the sort method as arguments |
+| toString | Returns the array as a string |
+| valueOf  | Similar to toString, returns the array as a string |
+
+
+
 ### 数组合并
 
 ### 迭代器函数
@@ -334,4 +353,3 @@ for (let i = 0; i < matrix3x3x3.length; i++) {
 ## 类型数组
 
 ## TypeScript中的数组
-
