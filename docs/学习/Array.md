@@ -320,17 +320,98 @@ for (let i = 0; i < matrix3x3x3.length; i++) {
 
 ### 数组合并
 
-在以下场景：有多个数组，需要将
+在以下场景：有多个数组，需要合并成一个数组。
+解决方法： 1.  迭代各个数组，然后将元素加入到最终的数组。
+2. concat方法。
+
+``` javascript 
+  const zero = 0;
+  const positiveNumbers = [1, 2, 3];
+  const negativeNumbers = [-3, -2, -1];
+  let numbers = negativeNumbers.concat(zero, positiveNumbers)
+    	
+```
+
+concat方法可以向一个数组传递数组、对象或是元素，
+数组会按照该方法传入的参数顺序连接指定数组。
+
 
 ### 迭代器函数
+假设数组中的值是1到15;如果元素里的元素可以被2整除(偶数)，函数就返回true，否则返回false。
+``` javascript
+  // ES5函数声明
+  function isEven(x) {
+    return x % 2 === 0 ? true : false;
+    // 可以简写为
+    return (x % 2 === 0)
+  }
+  let numbers = [1, 2, 3, 4, 5,  6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  
+  
+  // ES6箭头函数写法
+  const isEven = x => x % 2 === 0;
+  
+```
 
 1. every
+
+every方法会迭代数组中的每一个元素，直到函数返回false。
+``` javascript
+numbers.every(isEven);
+```
+在这个例子中 numbers第一个元素是1，他不是2的倍数，函数会返回false，然后every执行结束。
 2. some
+
+和every方法相反，some会迭代数组中的每一个元素，直到函数返回true
+``` javascript
+numbers.some(isEven);
+```
+在本例中,第二个元素2是偶数，第一个元素1是奇数。所以遍历第一个元素是false，第二个元素true，并在此会结束迭代，并返回true。
 3. forEach
+
+迭代整个数组，无返回值。
+``` javascript
+numbers.forEach(x => console.log(x % 2 === 0));
+```
+
 4. map & filter
+
+返回新数组的迭代方法
+``` javascript
+  const myMap = numbers.map(isEven);
+  // myMap的值：[false, true, false, true ...]
+  
+  // filter方法，返回的新数组由使函数返回true的元素组成
+  const evenNumbers = numbers.filter(isEven);
+  // evenNumbers的值：[2, 4, 5, 8, 10, 12 ,14]
+```
+
 5. reduce
 
+reduce方法，接受四个参数：previousValue, currentValue,index,array
+(其中index和array参数可选)。这个函数会返回一个将叠加到累加器的值，reduce停止执行后会返回这个累加器。对一个数组求和：
+``` javascript
+  const sum = numbers.reduce((previous, current) => previous + current);
+  // sum is 120
+```
+
+**这三个方法(map, filter ,reduce)是JavaScript函数式编程的基础**
+
 ### ECMAScript 6
+
+|function|description|
+|-|-|
+|@@iterator |Returns an iterator object containing the key-value pairs of the array, and the key-value of the array can be obtained throngh synchronous calls.|
+|copyWithin|Copy a series of elements to the specified starting position of the array.|
+|entries|Return @@iterator containing all key-value pairs of the array.|
+|includes|Returns true if there is an element in the array,otherwise returns false.|
+|find|Find an element from the array according to the conditions given by the callback function, and return the element if found.|
+|findIndex|Find an element from the array according to the conditions given by the callback function, and return the index of the element if found.|
+|fill|Fill the array with static values.|
+|from|Create a new array based on an existing array.|
+|keys|Return @@iterator containing all indexes of the array.|
+|of|Create a new array based on the parameters passed in.|
+|values|Return @@iterator containing all the values in the array.|
 
 1. for..of
 2. @@iterator
