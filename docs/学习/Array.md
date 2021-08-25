@@ -414,12 +414,138 @@ reduce方法，接受四个参数：previousValue, currentValue,index,array
 |values|Return @@iterator containing all the values in the array.|
 
 1. for..of
+
+	for...of与for...in：
+    区别在于diedaifangs。for..in语句可以任意顺序迭代对象的可枚举属性。for..of语句遍历可迭代对象定义要迭代的数据。
+	``` javascript
+      for (const n of numbers) {
+        console.log(n % 2 === 0 ? 'even' : 'add')
+      }
+    ```
 2. @@iterator
+
+ES2015为Array类增加了一个@@iterator属性，需要通过Symbol.iterator来访问。
+``` javascript
+  const num = [1,2,3,4,5,6,7,8,9];
+  let iterator = num[Symbol.iterator]();
+  console.log(iterator.next().value);  // 1
+  console.log(iterator.next().value);  // 2
+  console.log(iterator.next().value); // 3
+```
+不断调用迭代器的next方法，就能依次得到数组中的值。
+
+可以直接数组通过下面代码输出
+``` javascript
+  for (const n of iterator) {
+    console.log(n);
+  }
+```
+数组中的值都迭代完之后，iterator.next().value会返回undefined。
+
 3. entries, keys & values
+
+三种从数组中得到迭代器的方法。
+
+entries方法返回包含键值对的@@iterator。
+``` javascript
+  let aEntries = numbers.entries();	//得到键值对的迭代器
+  console.log(aEntries.next().value);	// [0, 1] - 位置0的值为1
+  console.log(aEntries.next().value);	// [1, 2] - 位置1的值为2
+  console.log(aEntries.next().value);	// [2, 3] - 位置2的值为3
+
+  // 也可以使用下面代码
+  aEntries = numbers.entries();
+  for(const n of aEntries) {
+    console.log(n);
+  }
+```
+使用集合、字典、散列表等数据结构时，能够取出键值对会很有用。
+
+keys方法返回数组索引的@@iterator。
+``` javascript
+  const aKeys = numbers.keys();
+  console.log(aKeys.next());	// {value: 0, done: false}
+  console.log(aKeys.next());	// {value: 1, done: false}
+  console.log(aKeys.next());	// {value: 2, done: false}
+```
+keys方法会返回numbers数组的索引。一旦没有可迭代的值，aKeys.next()就会返回一个value属性undefined、done属性为true的对象。如果done属性的值为false，就意味着还有可迭代的值。
+
+values方法返回的@@iterator则包含数组的值。
+``` javascript
+  const aValues = numbers.values();
+  console.log(aValues.next());	// {value: 1, done: false}
+  console.log(aValues.next());	// {value: 2, done: false}
+  console.log(aValues.next());	// {value: 3, done: false}
+```
+
 4. from
+
+Array.from方法根据已有的数组创建一个新数组。比如复制numbers数组。
+``` javascript
+  let numbers = Array.from(numbers);
+  
+  // 还可以传入一个用来过滤值的函数。
+  let evens = Array.from(numbers, x => (x % 2 == 0));
+  // 该方法会创建一个evnes数组，以及值true或false。
+```
 5. Array.of
+
+``` javascript
+  // Array.of方法根据传入的参数创建一个新数组。
+  let num1 = Array(1);
+  let num2 = Array(1, 2, 3, 4, 5, 6);
+  
+  // 等同于
+  let num1 = [1];
+  let num2 = [1, 2, 3, 4, 5, 6,];
+  
+  // 也可以复制已有数组 
+  let numbersCopy = Array.of(...num2);
+  
+ // 等同于Array.from(num4)。区别在于使用了展开运算符(...),会把num2数组里的值都展开成参数。
+```
 6. fill
+
+fill方法用静态值填充数组
+``` javascript
+  let numbersCopy = Array.of(1, 2, 3, 4, 5, 6);
+```
+numbersCopy数组length是6，也就是有6个位置。
+``` javascript
+  numbersCopy.fill(0);	// [0, 0, 0, 0, 0, 0]
+```
+numbersCopy数组所有位置上的值都会变成0。
+还可以指定开始填充索引。
+
+``` javascript
+  numbersCopy.fill(2, 1)	// [0, 2, 2, 2, 2, 2]
+```
+数组从1开始的所有位置都是2
+
+``` javascript
+  numbersCopy.fill(1, 2, 5);	// [0, 2, 1, 1, 1, 2]
+```
+数组会把1填充到数组索引2到5的位置(不包括5)
+
+适合用于创建数组并初始化值的时候
+``` javascript
+  let ones = Array(6).fill(1);	// [1, 1, 1, 1, 1, 1]
+```
+
 7. copyWithin
+
+copyWith方法复制数组中的一系列元素到同一数组指定的起始位置。
+``` javascript
+  let numbersCopy = Array.of(1, 2, 3, 4, 5, 6);
+```
+
+``` javascript
+  copyArray.copyWithin(0,3)	// [4, 5, 6, 4, 5, 6]
+```
+
+``` javascript
+  copyArray.copyWithin(1, 3, 5)	// [1, 4, 5, 4, 5, 6]
+```
 
 ### 排序元素
 
@@ -434,5 +560,30 @@ reduce方法，接受四个参数：previousValue, currentValue,index,array
 ### 输出数组为字符串
 
 ## 类型数组
+|类型数组|数据类型|
+|-|-|
+|Int8Array|8位二进制补码整数|
+|Uint8Array|8位无符号整数|
+|Uint8ClampedArray|8位无符号整数|
+|Int16Array|16位二进制补码整数|
+|Uint16Array|16位无符号整数|
+|Int32Array|32位二进制补码整数|
+|Uint32Array|32位无符号整数|
+|Float32Array|32位IEEE浮点数|
+|Float64Array|64位IEEE浮点数|
+
+``` javascript
+  let length = 5;
+  let int16 = new Int16Array(length);
+  
+  let array16 = [];
+  array16.length = length;
+  
+  for (let i = 0; i < length; i++) {
+    int16[i] = i + 1;
+  }
+  console.log(int16);
+```
+
 
 ## TypeScript中的数组
