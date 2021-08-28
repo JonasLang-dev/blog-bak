@@ -549,15 +549,134 @@ copyWith方法复制数组中的一系列元素到同一数组指定的起始位
 
 ### 排序元素
 
+``` javascript
+  numbers.reverse();	// 反序
+  
+  // 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+  numbers.sort();	// 1 10 11 12 13 14 15 2 3 4 5 6 7 9 9
+  // sort在进行排序时，把元素默认成字符串进行相互比较。
+  
+  numbers.sort((a, b)=> a - b);
+  // 当b大于a时，这代码会返回负数，反之则返回正数。如果相等，就会返回0。
+  
+  function compare(a, b) {
+    if (a < b) {
+      return -1;
+    }
+    if (a > b) {
+    return 1;
+    }
+    return 0;
+  }
+```
+JavaScript的sort方法接收compareFunction作为参数，然后sort会用它排序数组。
+
 1. 自定义排序
+
+可以对任意对象类型的数组排序，也可以创建compareFunction来比较元素。
+``` javascript
+  const friends = [
+    { name: 'John', age: 30 },
+    { name: 'Ana', age: 20 },
+    { name: 'Chris', age: 25},	// ES2017 允许存在尾逗号
+  ];
+  function comparePerson(a, b) {
+    if (a.age < b.age) {
+      return -1;
+    }
+    if (a.age > b.age) {
+      return 1;
+    }
+    return 0;
+  }
+  console.log(friends.sort(comparePerson));
+```
+
 2. 字符串排序
+
+``` javascript
+  let numbers = ['Ana', 'ana', 'john', 'John'];
+  console.log(names.sort());
+  // ["Ana", "John", "ana", "john"]
+```
+Javascript在做字符串比较的时候，是根据字符对应的ASCII值来比较。
+
+如果给sort传入一个忽略大小写的比较函数
+``` javascript
+  names = ['Ana', 'ana', 'john', 'John'];
+  console.log(names.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    }
+    if (a.toLowerCase() > b.toLowerCase() ){
+      return 1;
+    }
+    return 0;
+  }));
+  // 在这种情况下,sort函数不会有任何作用。他会按照现在的大小写字母顺序排序。
+```
+
+如果希望小写字母排在前面，那么需要使用localeCompare方法。
+``` javascript
+  names.sort((a, b) => a.localeCompare(b));
+  // [a, á]
+```
+带有重音符号的字符做排序的话也可以实现
+
 
 ### 搜索
 
+搜索有两个方法：indexOf方法返回与参数匹配的第一个元素的索引；lastIndexOf返回与参数匹配的最后一个元素的索引。
+  ``` javascript
+    // numbers是前面定义的1 - 15
+    console.log(numbers.indexOf(10));
+  	console.log(numbers.indexOf(100));
+    
+    // 第一行输出的是9， 第二行输出-1（100不在数组中）
+    
+    numbers.push(10);
+    console.log(numbers.lastIndexOf(10));
+  	console.log(numbers.lastIndexOf(100));
+    
+    // 新加了一个元素10，所以第二行输出15, 第三行输出-1
+  ```
+
 1. ECMAScript 2015 – find & findIndex
+
+``` javascript
+  let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  function multipleOf13(element, index, array) {
+    return (element % 13 == 0);
+  }
+  console.log(numbers.find(multipleOf13));
+  console.log(numbers.findIndex(multipleOf13));
+```
+find和findIndex方法接受一个回调函数，搜索一个满足回调函数条件的值。(上面找到十三的倍数例子)
+
+find和findIndex的不同之处在于，find方法返回第一个满足条件的值，findIndex方法则返回这个值在数组中的索引。如果没有满足条件的值, find会返回undefined，而findIndex返回-1。
+
 2. ECMAScript 7 – includes
 
+如果数组里存在某个元素, includes方法会返回true，否则返回false。
+``` javascript
+  consoel.log(numbers.includes(15));	// true
+  console.log(numbers.includes(20));	// false
+  
+  // 还可以给includes传入一个其实索引，搜索会从索引指定的位置开始。
+  console.log(numbers.includes(4, 5));
+```
+
 ### 输出数组为字符串
+tostring join
+``` javascript
+console.log(numbers.toString());
+
+// 会在控制台中输出1、2、3、4、5、6、7、8..
+
+const numbersString = numbers.join('-');
+console.log(numbersString);
+// 1-2-3-4-5-6-7...
+```
 
 ## 类型数组
 |类型数组|数据类型|
@@ -587,3 +706,44 @@ copyWith方法复制数组中的一系列元素到同一数组指定的起始位
 
 
 ## TypeScript中的数组
+
+TypeScript会在编译时进行类型检测，来确保只对所有值都属性相同数据类型的数组进行操作。
+
+``` Typescript
+  interface Person {
+    name: string;
+    age: number;
+  }
+  
+  const friends: {name: string, age: number}[];
+  const friends = [
+    { name: 'John', age: 30 },
+    { name: 'Anan', age: 20 },
+    { name: 'Chris', age: 25 },
+  ]
+  
+  function comparePerson(a: Person, b: Person) {
+    // function
+  }
+```
+``` javascript
+通过接口声明Person接口
+确保了ComparePerson函数只接受name和age属性的对象。
+friends数组没有显示的类型
+因此可以在本例中通过const friends: Person[]显示声明它的类型
+``` 
+
+``` javascript
+想要用TypeScript给JavaScript变量设置类型
+我们只需要使用const或let vsriableName: <type>[]
+抑或在.js拓展名的文件时，在第一行添加注释 // @ts-check
+```
+
+## 总结
+* 最常用的数据结构：数组。
+* 声明和初始化
+* 给数组赋值
+* 添加和删除元素
+* 二维，多维数组以及数组的主要方法
+* ES2015和ES2016规范新增的Array方法和功能
+* TypeSctip & TypeScript的编译时检测功能来确保JavaScript文件中的数组只包含具有相同类型的值。
