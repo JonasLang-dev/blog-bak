@@ -299,20 +299,20 @@ class Stack {
 }
 ```
 
-除了toString方法，其他创建的方法复杂度均为0<sub>(1)</sub>
+除了 toString 方法，其他创建的方法复杂度均为 0<sub>(1)</sub>
 
 ### 保护数据机构内部元素
 
 我们希望保护内部元素，只有暴露出的方法才能修改内部结构。
 
 ```javascript
-const stack = new Stack()
-console.log(Object.getOwnPropertyNames(stack))    //Array [ "count", "items" ]
-console.log(Object.keys(stack))    //Array [ "count", "items" ]
-console.log(stack.items)   //Object {  }
+const stack = new Stack();
+console.log(Object.getOwnPropertyNames(stack)); //Array [ "count", "items" ]
+console.log(Object.keys(stack)); //Array [ "count", "items" ]
+console.log(stack.items); //Object {  }
 ```
 
-ES2015(ES6)语法创建了stack类。是基于原型的。尽管基于原型的类能节省内存空间，并在拓展方面由于基于函数的类，但这种方式不能声明私有属性(变量)或方法
+ES2015(ES6)语法创建了 stack 类。是基于原型的。尽管基于原型的类能节省内存空间，并在拓展方面由于基于函数的类，但这种方式不能声明私有属性(变量)或方法
 
 #### 下划线命名约定
 
@@ -327,26 +327,24 @@ class Stack {
 
 只是一种约定，并不能保护数据，而且只能依赖于使用我们代码开发者所具备的常识。
 
+#### 用 ES2015 的限定作用域 Symbol 实现类
 
-
-#### 用ES2015的限定作用域Symbol实现类
-
-    ES2015新增了一种叫做Symbol的基本类型，他是不可变的，可以用作对象的属性。
+ES2015 新增了一种叫做 Symbol 的基本类型，他是不可变的，可以用作对象的属性。
 
 ```javascript
-const _itmes = Symbol('stackItems');
+const _itmes = Symbol("stackItems");
 class Stack {
   constructor() {
-    this[_items]= [];
+    this[_items] = [];
   }
 }
 ```
 
-这种方法创建了一个假的私有属性，因为ES2015新增的Object.getOwnProperySymbols方法能够取到类里面声明的所有Symbols属性。
+这种方法创建了一个假的私有属性，因为 ES2015 新增的 Object.getOwnProperySymbols 方法能够取到类里面声明的所有 Symbols 属性。
 
-访问stack[Obejct.getOwnPropertySymbols(stack)[0]]可以得到__items,所以这个方法不可行。
+访问 stack[Obejct.getOwnPropertySymbols(stack)[0]]可以得到\_\_items,所以这个方法不可行。
 
-#### 用ES2015的WeakMap实现类
+#### 用 ES2015 的 WeakMap 实现类
 
 一种数据类型可以确保属性是私有的,WeakMap 键值对。
 
@@ -355,36 +353,34 @@ const items = new WeakMap();
 // 声明一个WeakMap类型的变量items.
 
 class Stack {
-    constructor() {
-        items.set(this, [])
-        // 以this（Stack类自己的引用）为键，把代表栈的数组存入items。
-    }
-    push(element) {
-        const s = items.get(this);
-        // 以this为键从items中取值
-        s.push(element)
-    }
-    pop() {
-        const s = items.get(this);
-        const r = s.pop();
-        return r;
-    }
-    // ...
+  constructor() {
+    items.set(this, []);
+    // 以this（Stack类自己的引用）为键，把代表栈的数组存入items。
+  }
+  push(element) {
+    const s = items.get(this);
+    // 以this为键从items中取值
+    s.push(element);
+  }
+  pop() {
+    const s = items.get(this);
+    const r = s.pop();
+    return r;
+  }
+  // ...
 }
 ```
 
-items在Stack类里是真正的私有属性。采用这种方法，代码可读性不强，而且在拓展类时无法继承私有属性
+items 在 Stack 类里是真正的私有属性。采用这种方法，代码可读性不强，而且在拓展类时无法继承私有属性
 
+#### ECMAScript 类属性提案
 
-
-#### ECMAScript类属性提案
-
-TypeScript提供了一个给属性和方法使用的private修饰符，该修饰符只在编译时有用。在代码被转移完成后，属性同样是公开的
+TypeScript 提供了一个给属性和方法使用的 private 修饰符，该修饰符只在编译时有用。在代码被转移完成后，属性同样是公开的
 
 ```javascript
 class Stack {
-    #count = 0;
-    #items = 0;
+  #count = 0;
+  #items = 0;
 }
 ```
 
