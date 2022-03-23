@@ -9,7 +9,7 @@ module.exports = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/OIP-C.jpg",
+  favicon: "img/favicon.ico",
   organizationName: "Personal", // Usually your GitHub org/user name.
   projectName: "cat blog", // Usually your repo name.
   themeConfig: {
@@ -101,16 +101,12 @@ module.exports = {
       "@docusaurus/plugin-pwa",
       {
         debug: true,
-        offlineModeActivationStrategies: [
-          "appInstalled",
-          "standalone",
-          "queryString",
-        ],
+        offlineModeActivationStrategies: ["appInstalled", "queryString"],
         pwaHead: [
           {
             tagName: "link",
             rel: "icon",
-            href: "/img/OIP-C.jpg",
+            href: "/img/pwa/manifest-icon-512.png",
           },
           {
             tagName: "link",
@@ -120,7 +116,7 @@ module.exports = {
           {
             tagName: "meta",
             name: "theme-color",
-            content: "rgb(37, 194, 160)",
+            content: "#20232a",
           },
           {
             tagName: "meta",
@@ -130,42 +126,30 @@ module.exports = {
           {
             tagName: "meta",
             name: "apple-mobile-web-app-status-bar-style",
-            content: "#000",
+            content: "#20232a",
           },
           {
             tagName: "link",
             rel: "apple-touch-icon",
-            href: "/img/OIP-C.jpg",
+            href: "/img/pwa/manifest-icon-512.png",
           },
           {
             tagName: "link",
             rel: "mask-icon",
-            href: "/img/OIP-C.jpg",
-            color: "rgb(37, 194, 160)",
+            href: "/img/pwa/manifest-icon-512.png",
+            color: "#06bcee",
           },
           {
             tagName: "meta",
             name: "msapplication-TileImage",
-            content: "/img/OIP-C.jpg",
+            href: "/img/pwa/manifest-icon-512.png",
           },
           {
             tagName: "meta",
             name: "msapplication-TileColor",
-            content: "#000",
+            content: "#20232a",
           },
         ],
-        injectManifestConfig: {
-          manifestTransforms: [
-            //...
-          ],
-          modifyURLPrefix: {
-            //...
-          },
-          // We already add regular static assets (html, images...) to be available offline
-          // You can add more files according to your needs
-          globPatterns: ["**/*.{pdf,docx,xlsx}"],
-          // ...
-        },
       },
     ],
   ],
