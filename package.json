@@ -12,12 +12,21 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.11.6",
+    "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
-    "astro": "^1.6.7"
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "astro": "^1.6.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "@typescript-eslint/parser": "^5.42.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.27.0",
+    "eslint-plugin-astro": "^0.21.0",
+    "prettier": "^2.7.1"
   },
   "config": {
     "commitizen": {
