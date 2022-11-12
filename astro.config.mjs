@@ -6,6 +6,6 @@ import image from '@astrojs/image'
 import tailwind from '@astrojs/tailwind'
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://blog.supercutcat.com',
   integrations: [mdx(), sitemap(), react(), image(), tailwind()]
 })
