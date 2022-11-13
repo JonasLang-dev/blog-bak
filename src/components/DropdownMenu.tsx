@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { IoMenu } from 'react-icons/io5'
+import { IoMenu } from 'react-icons/io5/index.js'
 import DropdownMenuItems from './DropdownMenuItems'
 
 export default function DropdownMenu() {
@@ -30,7 +30,9 @@ export default function DropdownMenu() {
               Categories
             </div>
             <DropdownMenuItems href="/categories/blog">blog</DropdownMenuItems>
-            <DropdownMenuItems href="/categories/tools">tools</DropdownMenuItems>
+            <DropdownMenuItems href="/categories/tools">
+              tools
+            </DropdownMenuItems>
           </div>
         </Menu.Items>
       </Transition>
