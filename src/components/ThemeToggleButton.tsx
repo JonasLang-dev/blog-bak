@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { IoSunny, IoMoon } from 'react-icons/io5/index'
 
 const themes = ['light', 'dark']
@@ -10,18 +10,18 @@ const ThemeToggle = () => {
       return undefined
     }
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('thtme')
+      return localStorage.getItem('theme')
     }
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
     return 'light'
   })
   const toggleTheme = () => {
     const t = theme === 'light' ? 'dark' : 'light'
-    localStorage.setItem('thtme', t)
+    localStorage.setItem('theme', t)
     setTheme(t)
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = document.documentElement
     if (theme === 'light') {
       root.classList.remove('dark')
@@ -30,7 +30,7 @@ const ThemeToggle = () => {
     }
   }, [theme])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsMounted(true)
   }, [])
 
