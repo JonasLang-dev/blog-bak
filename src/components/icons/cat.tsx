@@ -4,6 +4,8 @@ export default function CatIcon() {
       className="w-5 inline-block transition-transform group-hover:rotate-[20deg]"
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
+      height="36"
+      width="36"
       viewBox="0 0 1780.000000 1800.000000"
       preserveAspectRatio="xMidYMid meet"
     >

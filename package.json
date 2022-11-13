@@ -1,8 +1,8 @@
 {
   "name": "cat-blog",
   "type": "module",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
