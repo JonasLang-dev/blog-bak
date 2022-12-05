@@ -5,10 +5,18 @@ import react from '@astrojs/react'
 import image from '@astrojs/image'
 import tailwind from '@astrojs/tailwind'
 import addClasses from 'rehype-add-classes'
+import astroI18next from 'astro-i18next'
 
 export default defineConfig({
   site: 'https://blog.supercutcat.com',
-  integrations: [mdx(), sitemap(), react(), image(), tailwind()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    react(),
+    image(),
+    tailwind(),
+    astroI18next()
+  ],
   markdown: {
     extendDefaultPlugins: true,
     rehypePlugins: [

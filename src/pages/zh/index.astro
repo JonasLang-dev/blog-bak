@@ -1,22 +1,19 @@
 ---
-import { changeLanguage } from 'i18next'
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-import { SITE_TITLE, SITE_DESCRIPTION, HOMEPAGE_URL } from '../config'
-import Body from '../components/Body.astro'
-import Content from '../components/Content.astro'
-import { IoArrowForward } from 'react-icons/io5/index.js'
-import Masthead from '../components/Masthead.astro'
-import { Image } from '@astrojs/image/components'
+import { changeLanguage } from "i18next";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, HOMEPAGE_URL } from "../../config";
+import Body from "../../components/Body.astro";
+import Content from "../../components/Content.astro";
+import { IoArrowForward } from "react-icons/io5/index.js";
+import Masthead from "../../components/Masthead.astro";
+import { Image } from "@astrojs/image/components";
 
-changeLanguage('en')
+changeLanguage("zh");
 
-const posts = (await Astro.glob('./blog/*.md')).sort(
-  (a: any, b: any) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
-)
+const posts = (await Astro.glob("./blog/*.md")).sort((a: any, b: any) => new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf());
 ---
 
 <!DOCTYPE html>
@@ -31,16 +28,11 @@ const posts = (await Astro.glob('./blog/*.md')).sort(
       <Content>
         <section class="mb-8 inset-4">
           <p class="indent-8">
-            As a front-end newcomer who has just graduated from CS, I need to
-            spend a lot of time studying to supplement my knowledge blind spots
-            and gain experience. So I will organize my knowledge during the
-            learning process, as well as the interesting facts encountered in
-            the coding process, and so on. I will share my content above on this
-            site, I hope it can be helpful to you!
+            作为一名刚刚从CS专业毕业的前端新人，我需要花许多时间用来学习以补充我的知识盲区并积累经验。所以我会对我的学习过程中的知识进行整理，以及coding过程中遇到的趣闻趣事，等等的记录。在这个网站上会对我上面的内容进行分享，希望能够对你有所帮助!
             <a
               href={HOMEPAGE_URL}
               class="inline-flex items-center gap-1 indent-1 text-orange-500"
-              >My portfolio<IoArrowForward className="inline" />
+              >我的作品集<IoArrowForward className="inline" />
             </a>
           </p>
         </section>
